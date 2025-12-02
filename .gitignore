@@ -1,5 +1,9 @@
 /bootstrap/cache.php
 .env
+.env.example
+.shop.sql
+.shop_update.sql
+.shop_update_14.sql
 /node_modules
 /public/hot
 /public/storage
