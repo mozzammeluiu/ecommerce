@@ -1,0 +1,10 @@
+.git
+node_modules
+# Keep vendor to ensure dependencies available in image
+storage/*.key
+storage/debugbar
+storage/framework/cache/data
+storage/logs
+.env
+docker-compose.override.yml
+**/.env
