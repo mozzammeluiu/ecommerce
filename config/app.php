@@ -150,7 +150,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         // Netshell\Paypal\PaypalServiceProvider::class, // removed (package deprecated)
         Barryvdh\DomPDF\ServiceProvider::class,
-        Unicodeveloper\Paystack\PaystackServiceProvider::class,
+        // Unicodeveloper\Paystack\PaystackServiceProvider::class, // removed (incompatible with Laravel 12)
         /*
          * Package Service Providers...
          */
@@ -215,7 +215,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         // 'Paypal' => Netshell\Paypal\Facades\Paypal::class, // removed (package deprecated)
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+        // 'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class, // removed (incompatible with Laravel 12)
     ],
 
 ];

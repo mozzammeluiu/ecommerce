@@ -6,16 +6,15 @@
     "type": "project",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.0",
-        "laravel/tinker": "^2.9",
-        "laravel/socialite": "^5.10",
+        "laravel/framework": "^12.0",
+        "laravel/tinker": "^2.10",
+        "laravel/socialite": "^5.16",
         "laravel/ui": "^4.5",
-        "barryvdh/laravel-dompdf": "^2.0",
-        "stripe/stripe-php": "^13.0",
+        "barryvdh/laravel-dompdf": "^3.0",
+        "stripe/stripe-php": "^15.0",
         "razorpay/razorpay": "^2.9",
-        "unicodeveloper/laravel-paystack": "^1.2",
         "paypal/paypal-checkout-sdk": "^1.0",
-        "php-open-source-saver/jwt-auth": "^2.7",
+        "php-open-source-saver/jwt-auth": "^2.8.3",
         "instamojo/instamojo-php": "^0.4.0",
         "laracasts/flash": "^3.2",
         "spatie/laravel-image-optimizer": "^1.7"
@@ -23,7 +22,7 @@
     "require-dev": {
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^10.5"
+        "phpunit/phpunit": "^11.0"
     },
     "autoload": {
         "classmap": [
