@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SubSubCategory extends Model
 {
-  public function subcategory(){
+  public function subcategory(): BelongsTo
+  {
   	return $this->belongsTo(SubCategory::class, 'sub_category_id');
   }
 

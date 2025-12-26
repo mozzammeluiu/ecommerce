@@ -101,13 +101,13 @@ class PaypalController extends Controller
     }
 
 
-    public function getCancel()
+    public function getCancel(Request $request)
     {
         // Curse and humiliate the user for cancelling this most sacred payment (yours)
         $request->session()->forget('order_id');
         $request->session()->forget('payment_data');
         flash(__('Payment cancelled'))->success();
-    	return redirect()->url()->previous();
+    	return redirect()->back();
     }
 
     public function getDone(Request $request)

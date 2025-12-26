@@ -264,19 +264,23 @@ class OrderController extends Controller
             $order->save();
 
             //stores the pdf for invoice
+            set_time_limit(120); // Increase timeout for PDF generation
             $pdf = PDF::setOptions([
-                            'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,
+                            'isHtml5ParserEnabled' => true,
+                            'isRemoteEnabled' => false, // Disable remote loading to prevent timeout
                             'logOutputFile' => storage_path('logs/log.htm'),
-                            'tempDir' => storage_path('logs/')
+                            'tempDir' => storage_path('logs/'),
+                            'chroot' => public_path(), // Set base path for asset loading
                         ])->loadView('invoices.customer_invoice', compact('order'));
             $output = $pdf->output();
-    		file_put_contents('public/invoices/'.'Order#'.$order->code.'.pdf', $output);
+            $invoice_path = public_path('invoices/Order#'.$order->code.'.pdf');
+    		file_put_contents($invoice_path, $output);
 
             $array['view'] = 'emails.invoice';
             $array['subject'] = 'Order Placed - '.$order->code;
             $array['from'] = env('MAIL_USERNAME');
             $array['content'] = 'Hi. Your order has been placed';
-            $array['file'] = 'public/invoices/Order#'.$order->code.'.pdf';
+            $array['file'] = $invoice_path;
             $array['file_name'] = 'Order#'.$order->code.'.pdf';
 
             //sends email to customer with the invoice pdf attached
@@ -288,7 +292,11 @@ class OrderController extends Controller
                 }
 
             }
-            unlink($array['file']);
+
+            // Delete the temporary invoice file if it exists
+            if(file_exists($invoice_path)){
+                unlink($invoice_path);
+            }
 
             $request->session()->put('order_id', $order->id);
         }

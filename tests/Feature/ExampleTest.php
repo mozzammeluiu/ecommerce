@@ -3,18 +3,15 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
-     *
-     * @return void
+     * Basic application health check.
      */
-    public function testBasicTest()
+    public function testBasicTest(): void
     {
-        $response = $this->get('/');
+        $response = $this->get('/health');
 
         $response->assertStatus(200);
     }

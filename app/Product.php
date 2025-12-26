@@ -3,26 +3,32 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
-  public function category(){
+  public function category(): BelongsTo
+  {
   	return $this->belongsTo(Category::class);
   }
 
-  public function subcategory(){
+  public function subcategory(): BelongsTo
+  {
   	return $this->belongsTo(SubCategory::class);
   }
 
-  public function subsubcategory(){
+  public function subsubcategory(): BelongsTo
+  {
   	return $this->belongsTo(SubSubCategory::class);
   }
 
-  public function brand(){
+  public function brand(): BelongsTo
+  {
   	return $this->belongsTo(Brand::class);
   }
 
-  public function user(){
+  public function user(): BelongsTo
+  {
   	return $this->belongsTo(User::class);
   }
 

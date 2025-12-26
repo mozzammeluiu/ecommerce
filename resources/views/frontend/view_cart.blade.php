@@ -244,7 +244,7 @@
                             </div>
                         </div>
                     </div>
-                    @if (\App\BusinessSetting::where('type', 'guest_checkout_active')->first()->value == 1)
+                    @if (\App\BusinessSetting::where('type', 'guest_checkout_active')->first()?->value == 1)
                         <div class="or or--1 mt-2">
                             <span>{{__('or')}}</span>
                         </div>

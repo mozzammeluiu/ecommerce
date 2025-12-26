@@ -188,3 +188,8 @@ Route::get('/paystack/payment/callback', [\App\Http\Controllers\PaystackControll
 Route::get('/vogue-pay', [\App\Http\Controllers\VoguePayController::class, 'showForm']);
 Route::get('/vogue-pay/success/{id}', [\App\Http\Controllers\VoguePayController::class, 'paymentSuccess']);
 Route::get('/vogue-pay/failure/{id}', [\App\Http\Controllers\VoguePayController::class, 'paymentFailure']);
+
+Route::get('/health', function () {
+    return response()->json(['status' => 'ok']);
+});
+

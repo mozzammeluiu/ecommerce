@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\FlashDeal;
 use App\FlashDealProduct;
 
@@ -49,7 +50,7 @@ class FlashDealController extends Controller
         $flash_deal->start_date = strtotime($request->start_date);
         $flash_deal->end_date = strtotime($request->end_date);
         $flash_deal->background_color = $request->background_color;
-        $flash_deal->slug = strtolower(str_replace(' ', '-', $request->title).'-'.str_random(5));
+        $flash_deal->slug = strtolower(str_replace(' ', '-', $request->title).'-'.Str::random(5));
         if($request->hasFile('banner')){
             $flash_deal->banner = $request->file('banner')->store('uploads/offers/banner');
         }
@@ -110,7 +111,7 @@ class FlashDealController extends Controller
         $flash_deal->end_date = strtotime($request->end_date);
         $flash_deal->background_color = $request->background_color;
         if (($flash_deal->slug == null) || ($flash_deal->title != $request->title)) {
-            $flash_deal->slug = strtolower(str_replace(' ', '-', $request->title) . '-' . str_random(5));
+            $flash_deal->slug = strtolower(str_replace(' ', '-', $request->title) . '-' . Str::random(5));
         }
         if($request->hasFile('banner')){
             $flash_deal->banner = $request->file('banner')->store('uploads/offers/banner');

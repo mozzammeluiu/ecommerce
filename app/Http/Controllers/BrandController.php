@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Brand;
 use App\Product;
 
@@ -51,7 +52,7 @@ class BrandController extends Controller
             $brand->slug = str_replace(' ', '-', $request->slug);
         }
         else {
-            $brand->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
+            $brand->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.Str::random(5);
         }
         if($request->hasFile('logo')){
             $brand->logo = $request->file('logo')->store('uploads/brands');
@@ -107,7 +108,7 @@ class BrandController extends Controller
             $brand->slug = str_replace(' ', '-', $request->slug);
         }
         else {
-            $brand->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
+            $brand->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.Str::random(5);
         }
         if($request->hasFile('logo')){
             $brand->logo = $request->file('logo')->store('uploads/brands');

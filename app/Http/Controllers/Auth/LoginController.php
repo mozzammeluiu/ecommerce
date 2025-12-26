@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Str;
 use Socialite;
 use App\User;
 use App\Customer;
@@ -75,7 +76,7 @@ class LoginController extends Controller
             $newUser->provider_id     = $user->id;
 
             $extension = pathinfo($user->avatar_original, PATHINFO_EXTENSION);
-            $filename = 'uploads/users/'.str_random(5).'-'.$user->id.'.'.$extension;
+            $filename = 'uploads/users/'.Str::random(5).'-'.$user->id.'.'.$extension;
             $fullpath = 'public/'.$filename;
             $file = file_get_contents($user->avatar_original);
             file_put_contents($fullpath, $file);

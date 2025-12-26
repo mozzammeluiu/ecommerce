@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Product;
 use App\Category;
 use App\Language;
@@ -166,7 +167,7 @@ class ProductController extends Controller
             $product->pdf = $request->pdf->store('uploads/products/pdf');
         }
 
-        $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.str_random(5);
+        $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->name)).'-'.Str::random(5);
 
         if($request->has('colors_active') && $request->has('colors') && count($request->colors) > 0){
             $product->colors = json_encode($request->colors);
@@ -524,7 +525,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product_new = $product->replicate();
-        $product_new->slug = substr($product_new->slug, 0, -5).str_random(5);
+        $product_new->slug = substr($product_new->slug, 0, -5).Str::random(5);
 
         if($product_new->save()){
             flash(__('Product has been duplicated successfully'))->success();

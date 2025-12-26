@@ -1,12 +1,11 @@
 
 <div style="margin-left:auto;margin-right:auto;">
 <style media="all">
-	@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 	*{
 		margin: 0;
 		padding: 0;
 		line-height: 1.5;
-		font-family: 'Open Sans', sans-serif;
+		font-family: Arial, Helvetica, sans-serif;
 		color: #333542;
 	}
 	div{
